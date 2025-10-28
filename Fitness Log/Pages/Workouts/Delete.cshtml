@@ -1,0 +1,22 @@
+@page
+@model Fitness_Log.Pages.Workouts.DeleteModel
+
+<h1>Delete Workout</h1>
+
+<div>
+    <h4>@Model.Workout.Exercise</h4>
+    <dl class="row">
+        <dt class="col-sm-2">Reps</dt>
+        <dd class="col-sm-10">@Model.Workout.Reps</dd>
+        <dt class="col-sm-2">Duration (s)</dt>
+        <dd class="col-sm-10">@Model.Workout.DurationSeconds</dd>
+        <dt class="col-sm-2">Date</dt>
+        <dd class="col-sm-10">@Model.Workout.Date</dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="Workout.Id" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

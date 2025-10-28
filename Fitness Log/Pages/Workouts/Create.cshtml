@@ -1,0 +1,25 @@
+@page
+@model Fitness_Log.Pages.Workouts.CreateModel
+
+<h1>Log Workout</h1>
+
+<form method="post">
+    <div class="mb-3">
+        <label class="form-label">Exercise</label>
+        <input asp-for="Workout.Exercise" class="form-control" />
+        <span asp-validation-for="Workout.Exercise" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Reps</label>
+        <input asp-for="Workout.Reps" class="form-control" type="number" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Duration (seconds)</label>
+        <input asp-for="Workout.DurationSeconds" class="form-control" type="number" />
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

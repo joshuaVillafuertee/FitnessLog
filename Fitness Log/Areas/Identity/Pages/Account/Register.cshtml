@@ -1,0 +1,39 @@
+@page
+@model Fitness_Log.Areas.Identity.Pages.Account.RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1>Create an account</h1>
+<p class="text-muted">Fill in the fields below to create your account. Use a strong password: at least 2 uppercase letters, 3 digits and 3 symbols.</p>
+
+<form method="post">
+    @Html.AntiForgeryToken()
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Input.Email" class="form-label">Email address</label>
+        <input asp-for="Input.Email" class="form-control" placeholder="you@example.com" />
+        <span asp-validation-for="Input.Email" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Input.Password" class="form-label">Password</label>
+        <input asp-for="Input.Password" type="password" class="form-control" placeholder="Choose a strong password" />
+        <div class="form-text">Password must contain at least 2 uppercase letters, 3 numbers and 3 symbols (for example: MyPW@@!23#).</div>
+        <span asp-validation-for="Input.Password" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Input.ConfirmPassword" class="form-label">Confirm password</label>
+        <input asp-for="Input.ConfirmPassword" type="password" class="form-control" placeholder="Repeat your password" />
+        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+    <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-link">Already have an account?</a>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

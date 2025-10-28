@@ -1,0 +1,25 @@
+@model Fitness_Log.Models.Workout
+
+@{
+    ViewData["Title"] = "Delete Workout";
+}
+
+<h1>Delete Workout</h1>
+
+<div>
+    <h4>@Model.Exercise</h4>
+    <dl class="row">
+        <dt class="col-sm-2">Reps</dt>
+        <dd class="col-sm-10">@Model.Reps</dd>
+        <dt class="col-sm-2">Duration (s)</dt>
+        <dd class="col-sm-10">@Model.DurationSeconds</dd>
+        <dt class="col-sm-2">Date</dt>
+        <dd class="col-sm-10">@Model.Date</dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

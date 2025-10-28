@@ -1,0 +1,36 @@
+@model List<Fitness_Log.Models.Workout>
+
+@{
+    ViewData["Title"] = "My Workouts";
+}
+
+<h1>My Workouts</h1>
+<p>
+    <a class="btn btn-primary" asp-action="Create">Log Workout</a>
+    <a class="btn btn-secondary" asp-action="ExportCsv">Export CSV</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Exercise</th>
+            <th>Reps</th>
+            <th>Duration (s)</th>
+            <th>Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var w in Model)
+        {
+            <tr>
+                <td>@w.Exercise</td>
+                <td>@w.Reps</td>
+                <td>@w.DurationSeconds</td>
+                <td>@w.Date.ToLocalTime()</td>
+                <td>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@w.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
