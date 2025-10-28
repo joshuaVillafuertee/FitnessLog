@@ -29,6 +29,14 @@ builder.Services.AddScoped<IPasswordValidator<IdentityUser>, CustomPasswordValid
 
 var app = builder.Build();
 
+// Ensure database and tables are created at startup (creates DB if missing)
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var db = services.GetRequiredService<ApplicationDbContext>();
+    db.Database.EnsureCreated();
+}
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
